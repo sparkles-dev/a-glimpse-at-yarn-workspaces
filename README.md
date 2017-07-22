@@ -153,6 +153,85 @@ $ yarn install
 Now, we only get dependencies installed to the top-most `node_modules` directory, meaning that all workspaces share the same depencies!
 
 
+## Does it work with Angular CLI?
+
+```bash
+$ ng new demo
+Unable to find "@angular/cli" in devDependencies.
+
+Please take the following steps to avoid issues:
+"npm install --save-dev @angular/cli@latest"
+
+installing ng
+? Overwrite package.json? Yes, overwrite
+  create .editorconfig
+  create README.md
+  create src/app/app.component.css
+  create src/app/app.component.html
+  create src/app/app.component.spec.ts
+  create src/app/app.component.ts
+  create src/app/app.module.ts
+  create src/assets/.gitkeep
+  create src/environments/environment.prod.ts
+  create src/environments/environment.ts
+  create src/favicon.ico
+  create src/index.html
+  create src/main.ts
+  create src/polyfills.ts
+  create src/styles.css
+  create src/test.ts
+  create src/tsconfig.app.json
+  create src/tsconfig.spec.json
+  create src/typings.d.ts
+  create .angular-cli.json
+  create e2e/app.e2e-spec.ts
+  create e2e/app.po.ts
+  create e2e/tsconfig.e2e.json
+  create .gitignore
+  create karma.conf.js
+  overwrite package.json
+  create protractor.conf.js
+  create tsconfig.json
+  create tslint.json
+Installing packages for tooling via yarn.
+Installed packages for tooling via yarn.
+Directory is already under version control. Skipping initialization of git.
+Project 'demo' successfully created.
+```
+
+Now, let's try to build the CLI app:
+
+```bash
+$ cd demo
+$ yarn build
+yarn build v0.27.5
+$ ng build
+You seem to not be depending on "@angular/core". This is an error.
+error Command failed with exit code 2.
+```
+
+Ouch!
+That's a tough one!
+Actually, Angular CLI has a [sanity check whether Angular is installed as a local dependency)https://github.com/angular/angular-cli/blob/master/packages/@angular/cli/upgrade/version.ts#L85-L89).
+
+
+```bash
+$ mkdir -p ./node_modules/@angular
+$ ln -sf ../../../node_modules/@angular/core ./node_modules/@angular/core
+$ ls -l node_modules/@angular/core
+lrwxr-xr-x  ... node_modules/@angular/core -> ../../../node_modules/@angular/core
+$ cat node_modules/@angular/core/package.json
+{
+  "name": "@angular/core",
+  "version": "4.3.1",
+  "description": "Angular - the core framework",
+  "main": "./bundles/core.umd.js",
+```
+
+
+So, at this point, this leads me to opening [an issue at the Angular CLI project](https://github.com/angular/angular-cli/issues/7097)...to bad it's not really working...
+
+
 
 [1]: https://github.com/yarnpkg/yarn/issues/3294
 [2]: https://github.com/thejameskyle/rfcs-1/blob/workspaces/accepted/0000-workspaces.md
