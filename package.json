@@ -7,6 +7,13 @@
   "author": "David <david@spektrakel.de>",
   "license": "MIT",
   "workspaces": [
-    
-  ]
+    "packages/*",
+    "demo"
+  ],
+  "dependencies": {
+    "@angular/http": "^4.3.1",
+    "@angular/platform-browser": "^4.3.1",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  }
 }

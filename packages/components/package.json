@@ -1,0 +1,8 @@
+{
+  "name": "@foo/components",
+  "version": "1.0.0",
+  "private": true,
+  "peerDependencies": {
+    "@angular/common": "4.3.1"
+  }
+}
