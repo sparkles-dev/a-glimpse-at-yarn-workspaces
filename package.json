@@ -1,0 +1,12 @@
+{
+  "name": "a-glimpse-at-yarn-workspaces",
+  "version": "1.0.0",
+  "description": "A glimpse at yarn workspaces, primarily for Angular",
+  "private": true,
+  "repository": "https://github.com/spektrakel-blog/a-glimpse-at-yarn-workspaces.git",
+  "author": "David <david@spektrakel.de>",
+  "license": "MIT",
+  "workspaces": [
+    
+  ]
+}
