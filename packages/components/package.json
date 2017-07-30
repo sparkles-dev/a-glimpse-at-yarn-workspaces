@@ -4,5 +4,11 @@
   "private": true,
   "peerDependencies": {
     "@angular/common": "^4.3.1"
+  },
+  "devDependencies": {
+    "ng-packagr": "^1.0.0-pre.13"
+  },
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json"
   }
 }
