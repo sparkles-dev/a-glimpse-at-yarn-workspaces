@@ -4,11 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "start": "ng serve --preserve-symlinks",
+    "build": "ng build --preserve-symlinks",
+    "test": "ng test --preserve-symlinks",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e --preserve-symlinks"
   },
   "private": true,
   "dependencies": {
