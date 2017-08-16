@@ -2,6 +2,8 @@
   "name": "@foo/components",
   "version": "1.0.0",
   "private": true,
+  "main": "src/public_api.ts",
+  "typings": "src/public_api.ts",
   "peerDependencies": {
     "@angular/common": "^4.3.1"
   },
